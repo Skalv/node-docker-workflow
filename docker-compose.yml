@@ -1,3 +1,6 @@
+# Build image based on the instructions in tha app/Dockerfile
+# Where we setup our Node env. create a volume install dependencies
+# Then forward port 3000 to  port 80 on the host.
 web:
   build: ./app
   volumes:
@@ -6,7 +9,11 @@ web:
     - "80:3000"
   links:
    - redis
+# Build Redis service from image on Docker Hub
+# Port 6379 is exposed and forwarded
 redis:
     image: redis:latest
     ports:
         - "6379:6379"
+
+
